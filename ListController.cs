@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class ListController : MonoBehaviour
 {
+    public Button sortButton;
     public TextMeshProUGUI listText;
     public Button addButton;
     public Button removeButton;
@@ -72,6 +73,18 @@ public class ListController : MonoBehaviour
             listText.text += "- " + item + "\n";
         }
 
+    }
+
+    void Start()
+    {
+        if (sortButton != null) sortButton.onClick.AddListener(SortList);
+    }
+
+    void SortList()
+    {
+        itemList.BubbleSort(); // o SelectionSort(), o InsertionSort()
+        Debug.Log("Lista ordenada con BubbleSort");
+        ShowList();
     }
 
 }
